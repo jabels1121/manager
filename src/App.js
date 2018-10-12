@@ -5,21 +5,21 @@ import {createStore} from 'redux';
 import reducers from './reducers';
 import firebase from 'firebase';
 import connectionConfig from './firebase/connectionConfig';
+import {Header} from './components/common/index';
+import LoginForm from './components/LoginForm';
 
 
 class App extends Component{
-
     componentWillMount(){
         const config = connectionConfig;
         firebase.initializeApp(config);
-        console.log(connectionConfig)
     }
-
     render() {
         return (
             <Provider store={createStore(reducers)}>
-                <View>
-                    <Text>Hello!</Text>
+                <View style={{flex: 1}}>
+                    <Header headerText='Manager App' onPress={() => 1}/>
+                    <LoginForm/>
                 </View>
             </Provider>
         );
