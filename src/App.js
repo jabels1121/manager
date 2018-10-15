@@ -18,7 +18,7 @@ class App extends Component{
         return (
             <Provider store={createStore(reducers)}>
                 <View style={{flex: 1}}>
-                    <Header headerText='Manager App' onPress={() => 1}/>
+                    <Header headerText='Manager App'/>
                     <LoginForm/>
                 </View>
             </Provider>

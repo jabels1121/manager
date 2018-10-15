@@ -36,16 +36,12 @@ const styles = {
     },
     androidButtonStyle: {
         height: 40,
-        flexDirection: 'row',
-        width: '95%',
-        alignSelf: 'center',
         backgroundColor: '#e6e6e6',
         borderWidth: 1.5,
         borderColor: '#e3e3e3',
         elevation: 2,
-        marginLeft: 5,
-        marginRight: 5,
-        justifyContent: 'center',
+        width: '98%'
+        //flex: 1
     }
 };
 

@@ -23,12 +23,11 @@ const styles = StyleSheet.create({
         android: {
             borderBottomWidth: 1,
             padding: 5,
-            paddingLeft: '5%',
             backgroundColor: '#fff',
-            justifyContent: 'flex-start',
             flexDirection: 'row',
             borderColor: '#ddd',
-            position: 'relative'
+            position: 'relative',
+            justifyContent: 'center',
         }
 
     })
