@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {emailChanged, passChanged} from "../actions";
-import {Card, CardSection, Input, Button} from "./common";
+import {Text, StyleSheet} from 'react-native';
+import {emailChanged, passChanged, loginUser} from "../actions";
+import {Card, CardSection, Input, Button, Spinner} from "./common";
 
 class LoginForm extends Component {
 
@@ -11,6 +12,42 @@ class LoginForm extends Component {
 
     onPasswordChange(text){
         this.props.passChanged(text);
+    }
+
+    onButtonPress(){
+        const {email, password} = this.props;
+
+        this.props.loginUser({email, password});
+    };
+
+    onErrorVisible(){
+        if (this.props.error === 'Authentication failed'){
+            return(
+                <CardSection>
+                    <Text style={styles.errorTextStyle}>
+                        {this.props.error}
+                    </Text>
+                </CardSection>
+            );
+        }
+    };
+
+    onSpinnerVisible(){
+        if (this.props.loading === true) {
+            return(
+                <CardSection>
+                    <Spinner size='large'/>
+                </CardSection>
+            );
+        }
+
+        return(
+            <CardSection>
+                <Button onPress={this.onButtonPress.bind(this)}>
+                    Login
+                </Button>
+            </CardSection>
+        );
     }
 
     render() {
@@ -35,22 +72,35 @@ class LoginForm extends Component {
                     />
                 </CardSection>
 
-                <CardSection>
-                    <Button>
-                        Login
-                    </Button>
-                </CardSection>
+                {this.onErrorVisible()}
+
+                {this.onSpinnerVisible()}
             </Card>
         )
     }
 }
 
 const mapStateToProps = state => {
-    const {email, password} = state.auth;
+    const {email, password, user, error, loading} = state.auth;
     return {
         email: email,
-        password: password
+        password: password,
+        user: user,
+        error: error,
+        loading: loading
     }
 };
 
-export default connect(mapStateToProps, {emailChanged, passChanged})(LoginForm);
+const styles = StyleSheet.create({
+    errorTextStyle: {
+        fontSize: 20,
+        color: 'red',
+        alignSelf: 'center'
+    }
+});
+
+export default connect(mapStateToProps, {
+    emailChanged,
+    passChanged,
+    loginUser
+})(LoginForm);
