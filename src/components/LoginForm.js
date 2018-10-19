@@ -6,6 +6,8 @@ import {Button, Card, CardSection, Input, Spinner} from "./common";
 
 class LoginForm extends Component {
 
+    // TODO: Divide authentication flow to two different screens: loginForm and authorization form.
+
     onEmailChange(text){
         this.props.emailChanged(text);
     }
@@ -80,7 +82,7 @@ class LoginForm extends Component {
     }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
     const {email, password, user, error, loading} = state.auth;
     return {
         email: email,
