@@ -8,23 +8,23 @@ class LoginForm extends Component {
 
     // TODO: Divide authentication flow to two different screens: loginForm and authorization form.
 
-    onEmailChange(text){
+    onEmailChange(text) {
         this.props.emailChanged(text);
     }
 
-    onPasswordChange(text){
+    onPasswordChange(text) {
         this.props.passChanged(text);
     }
 
-    onButtonPress(){
+    onButtonPress() {
         const {email, password} = this.props;
 
         this.props.loginUser({email, password});
     };
 
-    onErrorVisible(){
-        if (this.props.error === 'Authentication failed'){
-            return(
+    onErrorVisible() {
+        if (this.props.error === 'Authentication failed') {
+            return (
                 <CardSection>
                     <Text style={styles.errorTextStyle}>
                         {this.props.error}
@@ -34,16 +34,16 @@ class LoginForm extends Component {
         }
     };
 
-    onSpinnerVisible(){
+    onSpinnerVisible() {
         if (this.props.loading === true) {
-            return(
+            return (
                 <CardSection>
                     <Spinner size='large'/>
                 </CardSection>
             );
         }
 
-        return(
+        return (
             <CardSection>
                 <Button onPress={this.onButtonPress.bind(this)}>
                     Login
@@ -53,7 +53,7 @@ class LoginForm extends Component {
     }
 
     render() {
-        return(
+        return (
             <Card>
                 <CardSection>
                     <Input

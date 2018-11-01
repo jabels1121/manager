@@ -13,6 +13,7 @@ const Input = ({ label, value, onChangeText, placeholder, secureTextEntry }) => 
                 style={textInputStyle}
                 autoCorrect={false}
                 placeholder={placeholder}
+                placeholderTextColor='#A5A5A5'
             />
         </View>
     );

@@ -7,7 +7,8 @@ const Card = ({children}) => {
             {children}
         </View>
     );
-}
+};
+
 const styles = {
     containerStyle: {
         flexDirection: 'column',
